@@ -12,6 +12,7 @@
 		B5EE62A12C5BF85D006CE07A /* EssentailFeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EE62A02C5BF85D006CE07A /* EssentailFeedTests.swift */; };
 		B5EE62A22C5BF85D006CE07A /* EssentailFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = B5EE62942C5BF85D006CE07A /* EssentailFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5EE62AE2C5C0ECC006CE07A /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EE62AD2C5C0ECC006CE07A /* FeedItem.swift */; };
+		B5EE62B02C5C0FAE006CE07A /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EE62AF2C5C0FAE006CE07A /* FeedLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		B5EE629B2C5BF85D006CE07A /* EssentailFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentailFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EE62A02C5BF85D006CE07A /* EssentailFeedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentailFeedTests.swift; sourceTree = "<group>"; };
 		B5EE62AD2C5C0ECC006CE07A /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
+		B5EE62AF2C5C0FAE006CE07A /* FeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				B5EE62942C5BF85D006CE07A /* EssentailFeed.h */,
 				B5EE62952C5BF85D006CE07A /* EssentailFeed.docc */,
 				B5EE62AD2C5C0ECC006CE07A /* FeedItem.swift */,
+				B5EE62AF2C5C0FAE006CE07A /* FeedLoader.swift */,
 			);
 			path = EssentailFeed;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5EE62B02C5C0FAE006CE07A /* FeedLoader.swift in Sources */,
 				B5EE62AE2C5C0ECC006CE07A /* FeedItem.swift in Sources */,
 				B5EE62962C5BF85D006CE07A /* EssentailFeed.docc in Sources */,
 			);
