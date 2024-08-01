@@ -77,8 +77,7 @@
 			children = (
 				B5EE62942C5BF85D006CE07A /* EssentailFeed.h */,
 				B5EE62952C5BF85D006CE07A /* EssentailFeed.docc */,
-				B5EE62AD2C5C0ECC006CE07A /* FeedItem.swift */,
-				B5EE62AF2C5C0FAE006CE07A /* FeedLoader.swift */,
+				B5EE62B12C5C1162006CE07A /* FeedFeature */,
 			);
 			path = EssentailFeed;
 			sourceTree = "<group>";
@@ -89,6 +88,15 @@
 				B5EE62A02C5BF85D006CE07A /* EssentailFeedTests.swift */,
 			);
 			path = EssentailFeedTests;
+			sourceTree = "<group>";
+		};
+		B5EE62B12C5C1162006CE07A /* FeedFeature */ = {
+			isa = PBXGroup;
+			children = (
+				B5EE62AD2C5C0ECC006CE07A /* FeedItem.swift */,
+				B5EE62AF2C5C0FAE006CE07A /* FeedLoader.swift */,
+			);
+			path = FeedFeature;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
