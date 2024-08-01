@@ -11,6 +11,7 @@
 		B5EE629C2C5BF85D006CE07A /* EssentailFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5EE62912C5BF85D006CE07A /* EssentailFeed.framework */; };
 		B5EE62A12C5BF85D006CE07A /* EssentailFeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EE62A02C5BF85D006CE07A /* EssentailFeedTests.swift */; };
 		B5EE62A22C5BF85D006CE07A /* EssentailFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = B5EE62942C5BF85D006CE07A /* EssentailFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5EE62AE2C5C0ECC006CE07A /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EE62AD2C5C0ECC006CE07A /* FeedItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		B5EE62952C5BF85D006CE07A /* EssentailFeed.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = EssentailFeed.docc; sourceTree = "<group>"; };
 		B5EE629B2C5BF85D006CE07A /* EssentailFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentailFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EE62A02C5BF85D006CE07A /* EssentailFeedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentailFeedTests.swift; sourceTree = "<group>"; };
+		B5EE62AD2C5C0ECC006CE07A /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			children = (
 				B5EE62942C5BF85D006CE07A /* EssentailFeed.h */,
 				B5EE62952C5BF85D006CE07A /* EssentailFeed.docc */,
+				B5EE62AD2C5C0ECC006CE07A /* FeedItem.swift */,
 			);
 			path = EssentailFeed;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5EE62AE2C5C0ECC006CE07A /* FeedItem.swift in Sources */,
 				B5EE62962C5BF85D006CE07A /* EssentailFeed.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,6 +414,7 @@
 		B5EE62A92C5BF85D006CE07A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V2495YK4SH;
@@ -425,6 +430,7 @@
 		B5EE62AA2C5BF85D006CE07A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V2495YK4SH;
