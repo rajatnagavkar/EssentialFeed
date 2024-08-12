@@ -8,10 +8,18 @@
 import XCTest
 import EssentailFeed
 
+
+protocol HttpSession {
+    func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, (any Error)?) -> Void) -> HttpSessionTask
+}
+
+protocol HttpSessionTask{
+    func resume()
+}
 class URLSessionHttpClient {
-    private let session: URLSession
+    private let session: HttpSession
     
-    init(session: URLSession) {
+    init(session: HttpSession) {
         self.session = session
     }
     
@@ -28,7 +36,7 @@ final class URLSessionHttpClientTests: XCTestCase {
     
     func test_getFromURL_resumesDataTaskWithURL() {
         let url = URL(string: "http://a-url.com")!
-        let session = URLSessionSpy()
+        let session = HttpSessionSpy()
         let task = URLSeesionDataTaskSpy()
         session.stub(url: url, task: task)
         let sut = URLSessionHttpClient(session: session)
@@ -39,7 +47,7 @@ final class URLSessionHttpClientTests: XCTestCase {
     
     func test_getFromURL_failsOnRequestError() {
         let url = URL(string: "http://a-url.com")!
-        let session = URLSessionSpy()
+        let session = HttpSessionSpy()
         let error = NSError(domain: "Some error", code: 1)
         
         session.stub(url: url, error: error)
@@ -62,39 +70,37 @@ final class URLSessionHttpClientTests: XCTestCase {
         wait(for: [exp], timeout: 1)
     }
     
-    private class URLSessionSpy: URLSession {
+    private class HttpSessionSpy: HttpSession {
       
         private var stubs = [URL: Stub]()
         
         struct Stub{
-            var task: URLSessionDataTask
+            var task: HttpSessionTask
             var error: Error?
         }
         
-        override func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, (any Error)?) -> Void) -> URLSessionDataTask {
-            guard let stub = stubs[url] else {
+        func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, (any Error)?) -> Void) -> HttpSessionTask {
+                guard let stub = stubs[url] else {
                 fatalError("Couldn't find stub with \(url)")
             }
             completionHandler(nil,nil,stub.error)
             return stub.task
         }
         
-        func stub(url: URL, task: URLSessionDataTask = FakeURLSessionDataTask(),error: NSError? = nil ){
+        func stub(url: URL, task: HttpSessionTask = FakeURLSessionDataTask(),error: NSError? = nil ){
             stubs[url] = Stub(task: task, error: error)
         }
     }
 }
 
-private class FakeURLSessionDataTask: URLSessionDataTask {
-    override func resume() {
-        
-    }
+private class FakeURLSessionDataTask: HttpSessionTask {
+    func resume() { }
 }
 
-private class URLSeesionDataTaskSpy: URLSessionDataTask {
+private class URLSeesionDataTaskSpy: HttpSessionTask {
     var resumeCallCount = 0
     
-    override func resume() {
+    func resume() {
         resumeCallCount += 1
     }
 }
