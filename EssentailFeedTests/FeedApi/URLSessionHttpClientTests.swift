@@ -58,7 +58,7 @@ final class URLSessionHttpClientTests: XCTestCase {
     
     func test_getFromURL_failsOnRequestError() {
         
-        let requestError = NSError(domain: "Some error", code: 1)
+        let requestError = anyNSError()
         let resultError = resultForError(data: nil, response: nil, error: requestError)
         
     
@@ -71,11 +71,11 @@ final class URLSessionHttpClientTests: XCTestCase {
        XCTAssertNotNil(resultForError(data: nil, response: nonHttpURLResponse(), error: nil))
        XCTAssertNotNil(resultForError(data: nil, response: anyHttpURLResponse(), error: nil))
        XCTAssertNotNil(resultForError(data: anyData(), response: nil, error: nil))
-       XCTAssertNotNil(resultForError(data: anyData(), response: nil, error: anyError()))
-        XCTAssertNotNil(resultForError(data: nil, response: nonHttpURLResponse(), error: anyError()))
-        XCTAssertNotNil(resultForError(data: nil, response: anyHttpURLResponse(), error: anyError()))
-        XCTAssertNotNil(resultForError(data: anyData(), response: nonHttpURLResponse(), error: anyError()))
-        XCTAssertNotNil(resultForError(data: anyData(), response: anyHttpURLResponse(), error: anyError()))
+       XCTAssertNotNil(resultForError(data: anyData(), response: nil, error: anyNSError()))
+        XCTAssertNotNil(resultForError(data: nil, response: nonHttpURLResponse(), error: anyNSError()))
+        XCTAssertNotNil(resultForError(data: nil, response: anyHttpURLResponse(), error: anyNSError()))
+        XCTAssertNotNil(resultForError(data: anyData(), response: nonHttpURLResponse(), error: anyNSError()))
+        XCTAssertNotNil(resultForError(data: anyData(), response: anyHttpURLResponse(), error: anyNSError()))
         XCTAssertNotNil(resultForError(data: anyData(), response: nonHttpURLResponse(), error: nil))
         
     }
@@ -119,7 +119,7 @@ final class URLSessionHttpClientTests: XCTestCase {
         return Data(bytes: "any data".utf8)
     }
     
-    private func anyError() -> NSError {
+    private func anyNSError() -> NSError {
         return NSError(domain: "any error", code: 0)
     }
     
