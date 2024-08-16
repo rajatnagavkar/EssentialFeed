@@ -58,41 +58,33 @@ final class URLSessionHttpClientTests: XCTestCase {
     
     func test_getFromURL_failsOnRequestError() {
         
-        let error = NSError(domain: "Some error", code: 1)
-        URLProtocolStub.stub(data:nil,response:nil,error: error)
+        let requestError = NSError(domain: "Some error", code: 1)
+        let resultError = resultForError(data: nil, response: nil, error: requestError)
         
-        
-        let sut = URLSessionHttpClient()
-        let exp = expectation(description: "Wait for completion")
-        makeSUT().get(from: anyURL()){ result in
-            switch result {
-            case let .failure(receivedError as NSError):
-                XCTAssertNotNil(receivedError)
-            default:
-                XCTFail("Expected to receive failure error \(error) but received \(result)")
-                
-            }
-            
-            exp.fulfill()
-        }
-        
-        wait(for: [exp], timeout: 1)
-       
-       
+    
+        XCTAssertNotEqual(resultError as NSError?, requestError)
     }
     
     func test_getFromURL_failsOnAllNilValues() {
         
-        URLProtocolStub.stub(data:nil,response:nil,error: nil)
+       XCTAssertNotNil(resultForError(data: nil, response: nil, error: nil))
+       
+       
+    }
+    
+    private func resultForError(data: Data?,response: URLResponse?,error: Error?,file: StaticString = #file,
+                                line: UInt = #line) -> Error?{
+        URLProtocolStub.stub(data:data,response:response,error: error)
+        let sut = makeSUT(file: file,line: line)
         
-        
+        var receiveError: Error?
         let exp = expectation(description: "Wait for completion")
-        makeSUT().get(from: anyURL()){ result in
+        sut.get(from: anyURL()){ result in
             switch result {
-            case .failure:
-               break
+            case let .failure(error):
+               receiveError = error
             default:
-                XCTFail("Expected failure but received \(result)")
+                XCTFail("Expected failure but received \(result) instead",file: file,line: line)
                 
             }
             
@@ -100,8 +92,7 @@ final class URLSessionHttpClientTests: XCTestCase {
         }
         
         wait(for: [exp], timeout: 1)
-       
-       
+        return receiveError
     }
     
     // MARK: Helpers
