@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "FD9C4EA2-0153-4B8F-930A-8C4A8FA890C7",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:EssentailFeed.xcodeproj",
+        "identifier" : "B5EE629A2C5BF85D006CE07A",
+        "name" : "EssentailFeedTests"
+      }
+    }
+  ],
+  "version" : 1
+}
