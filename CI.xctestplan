@@ -9,7 +9,16 @@
     }
   ],
   "defaultOptions" : {
-    "codeCoverage" : false
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:EssentailFeed.xcodeproj",
+          "identifier" : "B5EE62902C5BF85D006CE07A",
+          "name" : "EssentailFeed"
+        }
+      ]
+    },
+    "testExecutionOrdering" : "random"
   },
   "testTargets" : [
     {
@@ -17,6 +26,13 @@
         "containerPath" : "container:EssentailFeed.xcodeproj",
         "identifier" : "B5EE629A2C5BF85D006CE07A",
         "name" : "EssentailFeedTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:EssentailFeed.xcodeproj",
+        "identifier" : "B5A77FFE2C74E08C00D6CD4F",
+        "name" : "EssentailFeedAPIEndToEndTests"
       }
     }
   ],
