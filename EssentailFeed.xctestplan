@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "052FFBB4-EF45-449F-BDE8-23702CCCB925",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "threadSanitizerEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:EssentailFeed.xcodeproj",
+        "identifier" : "B5EE629A2C5BF85D006CE07A",
+        "name" : "EssentailFeedTests"
+      }
+    }
+  ],
+  "version" : 1
+}

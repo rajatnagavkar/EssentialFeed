@@ -51,6 +51,7 @@
 		B5A7800C2C751A8C00D6CD4F /* CI.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CI.xctestplan; sourceTree = "<group>"; };
 		B5E5657D2C6A4BFE0099AD80 /* URLSessionHttpClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHttpClientTests.swift; sourceTree = "<group>"; };
 		B5E84A9E2C5D61E700B3A742 /* RemoteFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoader.swift; sourceTree = "<group>"; };
+		B5E85D9E2C7637B1007225C6 /* EssentailFeed.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EssentailFeed.xctestplan; sourceTree = "<group>"; };
 		B5EE62912C5BF85D006CE07A /* EssentailFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentailFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EE62942C5BF85D006CE07A /* EssentailFeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EssentailFeed.h; sourceTree = "<group>"; };
 		B5EE62952C5BF85D006CE07A /* EssentailFeed.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = EssentailFeed.docc; sourceTree = "<group>"; };
@@ -119,6 +120,7 @@
 		B5EE62872C5BF85D006CE07A = {
 			isa = PBXGroup;
 			children = (
+				B5E85D9E2C7637B1007225C6 /* EssentailFeed.xctestplan */,
 				B5A7800C2C751A8C00D6CD4F /* CI.xctestplan */,
 				B5EE62932C5BF85D006CE07A /* EssentailFeed */,
 				B5EE629F2C5BF85D006CE07A /* EssentailFeedTests */,
