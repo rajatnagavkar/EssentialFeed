@@ -28,8 +28,8 @@ class LocalFeedLoader {
 
 class FeedStore {
     typealias DeletionCompletion = (Error?) ->  Void
+    
     var deleteCacheFeedCount = 0
-    var insertCallCount = 0
     
     var insertions = [(items: [FeedItem], timestamp: Date)]()
     
