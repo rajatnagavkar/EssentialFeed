@@ -37,10 +37,3 @@ public final class LocalFeedLoader {
     }
 }
 
-public protocol FeedStore {
-    typealias DeletionCompletion = (Error?) ->  Void
-    func deleteCachedFeed(completion: @escaping DeletionCompletion)
-    
-    typealias InsertionCompletion = (Error?)-> Void
-    func insert(_ items: [FeedItem],timestamp: Date,completion: @escaping InsertionCompletion)
-}
