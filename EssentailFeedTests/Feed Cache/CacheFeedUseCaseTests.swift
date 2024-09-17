@@ -28,7 +28,7 @@ class CacheFeedUseCaseTests: XCTestCase {
     func test_save_doesNotRequestCacheInsertionOnDeletionError() {
         let (sut,store) = makeSUT()
         let feed = uniqueImageFeed()
-        let deletionError = anyError()
+        let deletionError = anyNSError()
         
         sut.save(feed.models){_ in}
         store.completeDeletion(with: deletionError)
@@ -52,7 +52,7 @@ class CacheFeedUseCaseTests: XCTestCase {
     func test_save_failsONDeletionError() {
         let (sut,store) = makeSUT()
         
-        let deletionError = anyError()
+        let deletionError = anyNSError()
         
         expect(sut, toCompleteWithError: deletionError, when: {
             store.completeDeletion(with: deletionError)
@@ -63,7 +63,7 @@ class CacheFeedUseCaseTests: XCTestCase {
     func test_save_failsOnInsertionError() {
         let (sut,store) = makeSUT()
         
-        let insertionError = anyError()
+        let insertionError = anyNSError()
         
         expect(sut, toCompleteWithError: insertionError, when: {
             store.completeDeletionSuccessful()
@@ -92,7 +92,7 @@ class CacheFeedUseCaseTests: XCTestCase {
         
         sut = nil
         
-        store.completeDeletion(with: anyError())
+        store.completeDeletion(with: anyNSError())
         
         XCTAssertTrue(receivedResults.isEmpty)
     }
@@ -109,7 +109,7 @@ class CacheFeedUseCaseTests: XCTestCase {
         
         store.completeDeletionSuccessful()
         sut = nil
-        store.completeInsertion(with: anyError())
+        store.completeInsertion(with: anyNSError())
         
         XCTAssertTrue(receivedResults.isEmpty)
     }
@@ -125,13 +125,7 @@ class CacheFeedUseCaseTests: XCTestCase {
         return (models,localItems)
     }
     
-    private func anyURL() -> URL {
-        return URL(string: "https://any-url.com")!
-    }
     
-    private func anyError() -> NSError {
-        return NSError(domain: "any Error", code: 0)
-    }
     
     private func makeSUT(currentDate: @escaping () -> Date = Date.init,file: StaticString = #file,
                          line: UInt = #line) -> (sut: LocalFeedLoader, store: FeedStoreSpy) {
