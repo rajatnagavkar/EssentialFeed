@@ -8,7 +8,38 @@
 import XCTest
 import EssentailFeed
 
+protocol FeedStoreSpecs {
 
+    func test_retrive_deliversEmptyOnEmptyCache()
+    func test_retrive_hasNoSideEffectsOnEmptyCache()
+    func test_retrieval_deliversFoundValuesOnEmptyCache()
+    func test_retrieval_hasNoSideEffectsOnEmptyCache()
+    
+
+    func test_insert_overridesPreviouslyInsertedCacheValues()
+   
+
+    func test_deletion_hasNoSideEffectOnEmptyCache()
+    func test_deletion_emptiesPreviouslyInsertedCache()
+    
+
+    func test_storeSideEffects_RunSerially()
+}
+
+protocol FailableRetrieveFeedStoreSpecs {
+    func test_retrieve_deliversErrorOnRetrievalError()
+    func test_retrieve_hasNoSideEffectsOnFailure()
+}
+
+protocol FailableInsertFeedStoreSpecs {
+    func test_insert_deliversErrorOnInsertionError()
+    func test_insert_hasNoSideEffectsOnInsertionError()
+}
+
+protocol FailableDeleteFeedStoreSpecs {
+    func test_delete_deliversErrorOnDeletionError()
+    func test_delete_hasNoSideEffectsOnDeletionError()
+}
 
 class CodableFeedStoreTests: XCTestCase {
     
@@ -138,6 +169,18 @@ class CodableFeedStoreTests: XCTestCase {
         let insertionError = insert((feed,timestamp), to: sut)
         
         XCTAssertNotNil(insertionError,"Expected cache insertion to fail with an error")
+     
+    }
+    
+    func test_insert_hasNoSideEffectsOnInsertionError() {
+        let invalidStoreURL = URL(string: "invalid://store-url")
+        let sut = makeSUT(storeURL: invalidStoreURL)
+        let feed = uniqueImageFeed().local
+        let timestamp = Date()
+        
+        insert((feed,timestamp), to: sut)
+        
+        expect(sut, toRetrieve: .empty)
     }
     
     func test_deletion_hasNoSideEffectOnEmptyCache() {
@@ -168,6 +211,14 @@ class CodableFeedStoreTests: XCTestCase {
         let deletionError = deleteCache(from: sut)
         
         XCTAssertNotNil(deletionError,"Expected non empty cache deletion to succeed")
+    }
+    
+    func test_delete_hasNoSideEffectsOnDeletionError() {
+        let noDeletePermissionURL = noDeletePermissionURL()
+        let sut = makeSUT(storeURL: noDeletePermissionURL)
+        
+        deleteCache(from: sut)
+        
         expect(sut, toRetrieve: .empty)
     }
     
