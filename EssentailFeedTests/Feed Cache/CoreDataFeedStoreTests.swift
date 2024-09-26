@@ -5,8 +5,26 @@
 //  Created by Rajat Nagavkar on 9/26/24.
 //
 
-import Foundation
 import XCTest
+import EssentailFeed
+
+class CoreDataFeedStore: FeedStore {
+    func deleteCachedFeed(completion: @escaping DeletionCompletion) {
+        
+    }
+    
+    func insert(_ feed: [EssentailFeed.LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
+        
+    }
+    
+    func retrieve(completion: @escaping RetrievalCompletion) {
+        completion(.empty)
+    }
+    
+    
+    
+}
+
 
 class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
     func test_retrive_deliversEmptyOnEmptyCache() {
@@ -21,24 +39,24 @@ class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
         
     }
     
-    func test_retrieval_hasNoSideEffectsOnEmptyCache() {
+    func test_retrieval_hasNoSideEffectsOnNonEmptyCache() {
         
     }
     
     func test_insert_deliversNoErrorOnEmptyCache() {
-
+        
     }
-
+    
     func test_insert_deliversNoErrorOnNonEmptyCache() {
-
+        
     }
     
     func test_insert_overridesPreviouslyInsertedCacheValues() {
         
     }
     
-    func test_delete_deliversNoErrorOnEmptyCache() {
-
+    func test_deletion_deliversNoErrorOnEmptyCache() {
+        
     }
     
     func test_deletion_hasNoSideEffectOnEmptyCache() {
@@ -46,10 +64,10 @@ class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
     }
     
     func test_delete_deliversNoErrorOnNonEmptyCache() {
-
+        
     }
     
-    func test_deletion_emptiesPreviouslyInsertedCache() {
+    func test_delete_emptiesPreviouslyInsertedCache() {
         
     }
     
@@ -57,5 +75,11 @@ class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
         
     }
     
+    //MARK: Helper
+    func makeSUT(storeURL: URL? = nil,file: StaticString = #file,line: UInt = #line) -> CoreDataFeedStore {
+        let sut = CoreDataFeedStore()
+        trackForMemoryLeaks(sut, file: file,line: line)
+        return sut
+    }
     
 }
