@@ -8,16 +8,18 @@
 import XCTest
 import EssentailFeed
 
-class CoreDataFeedStore: FeedStore {
-    func deleteCachedFeed(completion: @escaping DeletionCompletion) {
+public final class CoreDataFeedStore: FeedStore {
+    public init() {}
+    
+    public func deleteCachedFeed(completion: @escaping DeletionCompletion) {
         
     }
     
-    func insert(_ feed: [EssentailFeed.LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
+    public func insert(_ feed: [EssentailFeed.LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
         
     }
     
-    func retrieve(completion: @escaping RetrievalCompletion) {
+    public func retrieve(completion: @escaping RetrievalCompletion) {
         completion(.empty)
     }
     
@@ -28,7 +30,9 @@ class CoreDataFeedStore: FeedStore {
 
 class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
     func test_retrive_deliversEmptyOnEmptyCache() {
+        let sut = makeSUT()
         
+        assertThatRetrieveDeliversEmptyOnEmptyCache(on: sut)
     }
     
     func test_retrive_hasNoSideEffectsOnEmptyCache() {
@@ -76,7 +80,7 @@ class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
     }
     
     //MARK: Helper
-    func makeSUT(storeURL: URL? = nil,file: StaticString = #file,line: UInt = #line) -> CoreDataFeedStore {
+    private func makeSUT(file: StaticString = #file,line: UInt = #line) -> FeedStore {
         let sut = CoreDataFeedStore()
         trackForMemoryLeaks(sut, file: file,line: line)
         return sut
