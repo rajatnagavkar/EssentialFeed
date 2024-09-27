@@ -36,7 +36,9 @@ class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
     }
     
     func test_retrive_hasNoSideEffectsOnEmptyCache() {
+        let sut = makeSUT()
         
+        assertThatRetrieveHasNoSideEffectsOnEmptyCache(on: sut)
     }
     
     func test_retrieval_deliversFoundValuesOnEmptyCache() {
