@@ -9,6 +9,18 @@ import XCTest
 import EssentailFeed
 
 final class EssentailFeedCacheIntegrationTests: XCTestCase {
+    
+    override func setUp() {
+        super.setUp()
+        
+        setUpEmptyStoreState()
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+        
+        undoStoreSideEffects()
+    }
 
     func testLoadDeliversNoItemsOnEmptyCache() {
         let sut = makeSUT()
@@ -40,6 +52,18 @@ final class EssentailFeedCacheIntegrationTests: XCTestCase {
         return sut
     }
     
+    private func setUpEmptyStoreState(){
+        deleteStoreArtifacts()
+    }
+    
+    private func undoStoreSideEffects() {
+        deleteStoreArtifacts()
+    }
+    
+    private func deleteStoreArtifacts() {
+        try? FileManager.default.removeItem(at: testSpecificStoreURL())
+    }
+    
     private func testSpecificStoreURL() -> URL {
         return cachesDirectory().appendingPathComponent("\(type(of: self)).store")
     }
@@ -48,5 +72,4 @@ final class EssentailFeedCacheIntegrationTests: XCTestCase {
         return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
     }
     
-
 }
