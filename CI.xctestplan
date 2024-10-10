@@ -34,6 +34,13 @@
         "identifier" : "B5A77FFE2C74E08C00D6CD4F",
         "name" : "EssentailFeedAPIEndToEndTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:EssentailFeed.xcodeproj",
+        "identifier" : "B53B1F202CB819A700965071",
+        "name" : "EssentailFeedCacheIntegrationTests"
+      }
     }
   ],
   "version" : 1
