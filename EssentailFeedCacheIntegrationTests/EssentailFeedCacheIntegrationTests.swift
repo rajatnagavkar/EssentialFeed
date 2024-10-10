@@ -87,6 +87,8 @@ final class EssentailFeedCacheIntegrationTests: XCTestCase {
                 
             case let .failure(error):
                 XCTFail("Expected successfull feed result, got \(error) instead",file: file,line: line)
+            @unknown default:
+                XCTFail("Unknown enum case")
             }
             
             exp.fulfill()
