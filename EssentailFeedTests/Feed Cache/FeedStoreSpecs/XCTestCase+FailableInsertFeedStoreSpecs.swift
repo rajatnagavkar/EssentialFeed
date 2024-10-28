@@ -21,7 +21,7 @@ extension FailableInsertFeedStoreSpecs where Self: XCTestCase{
         
         insert((uniqueImageFeed().local,Date()), to: sut)
         
-        expect(sut, toRetrieve: .success(.empty))
+        expect(sut, toRetrieve: .success(.none))
     }
     
 }
