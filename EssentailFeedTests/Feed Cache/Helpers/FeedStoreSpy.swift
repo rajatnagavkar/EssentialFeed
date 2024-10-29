@@ -10,7 +10,6 @@ import EssentailFeed
 
 class FeedStoreSpy: FeedStore{
     
-    
     enum ReceivedMessages: Equatable {
         case deleteCachedFeed
         case insert([LocalFeedImage], Date)
@@ -29,11 +28,11 @@ class FeedStoreSpy: FeedStore{
     }
     
     func completeDeletion(with error: Error, at index: Int = 0 ){
-        deletionCompletion[index](error)
+        deletionCompletion[index](.failure(error))
     }
     
     func completeDeletionSuccessful(at index: Int = 0){
-        deletionCompletion[index](nil)
+        deletionCompletion[index](.success(()))
     }
     
     func insert(_ feed: [LocalFeedImage],timestamp: Date,completion: @escaping InsertionCompletion) {
@@ -42,11 +41,11 @@ class FeedStoreSpy: FeedStore{
     }
     
     func completeInsertion(with error: Error,  at index: Int = 0 ) {
-        insertionCompletion[index](error)
+        insertionCompletion[index](.failure(error))
     }
     
     func completeInsertionSuccessfully(at index: Int = 0){
-        insertionCompletion[index](nil)
+        insertionCompletion[index](.success(()))
     }
     
     func retrieve(completion: @escaping RetrievalCompletion) {
